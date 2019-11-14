@@ -17,8 +17,8 @@ public class Instructions {
 	private Scene scene;
 	private GraphicsContext gc;
 	private Canvas canvas;
-	
-			
+	MainScreen mainscreen;
+
 	// add a parameter for the reason: 0 for lose, 1 for win
 	Instructions(){
 		this.pane = new AnchorPane();
@@ -29,6 +29,7 @@ public class Instructions {
 	}
 	
 	private void setProperties(){
+		
 		this.gc.setFill(Color.rgb(13, 49, 61));					//set color of background
 		this.gc.fillRect(0,0,800,800);
 		Font Header = Font.font("Garamond",FontWeight.BOLD,40);	//set font type, style and size
@@ -59,7 +60,8 @@ public class Instructions {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				// dito sana may return to main menu, pero di ko pa natry so exit palang yung ginagawa niya.
-				System.exit(0);
+				
+//				mainscreen.getStage().
 			}
 		});
 		

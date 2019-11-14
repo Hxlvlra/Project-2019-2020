@@ -44,27 +44,32 @@ public class MainScreen {
 		this.stage = stage;
 
 		this.gc.drawImage(bg, 0, 0);
-		this.gc.drawImage(header, 100, 50);
-//		Font theFont = Font.font("Garamond",FontWeight.BOLD,60);	//set font type, style and size
-//		this.gc.setFont(theFont);
-//		this.gc.setFill(Color.WHITE);	//set font color of text
-//		this.gc.fillText("BURGER TIME", 25, 75);
-		
+//		this.gc.drawImage(header, 100, 50);
+		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,60);	//set font type, style and size
+		this.gc.setFont(Header);
+		this.gc.setFill(Color.WHITE);	//set font color of text
+		this.gc.fillText("BURGER TIME", 50, 150);
+
+		Font button = Font.font("Press Start 2P",FontWeight.BOLD,16);	//set font type, style and size
+
 		Button newGame = new Button("Start New Game");
+		newGame.setFont(button);
 		newGame.setId(MainScreen.NEW_GAME);
-		newGame.setLayoutX(350);
+		newGame.setLayoutX(300);
 		newGame.setLayoutY(300);
 		this.addEventHandler(newGame);
 		
 		Button instructions = new Button("How to Play");
+		instructions.setFont(button);
 		instructions.setId(MainScreen.INSTRUCTIONS);
-		instructions.setLayoutX(350);
+		instructions.setLayoutX(300);
 		instructions.setLayoutY(400);
 		this.addEventHandler(instructions);
 
 		Button about = new Button("About the Game");
+		about.setFont(button);
 		about.setId(MainScreen.ABOUT);
-		about.setLayoutX(350);
+		about.setLayoutX(300);
 		about.setLayoutY(500);
 		this.addEventHandler(about);
 				
@@ -123,4 +128,7 @@ public class MainScreen {
 		return this.scene;
 	}
 
+	Stage getStage() {
+		return this.stage;
+	}
 }
