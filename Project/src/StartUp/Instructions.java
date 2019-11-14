@@ -11,13 +11,13 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.stage.Stage;
 
 public class Instructions {
 	private AnchorPane pane;
 	private Scene scene;
 	private GraphicsContext gc;
 	private Canvas canvas;
-	MainScreen mainscreen;
 
 	// add a parameter for the reason: 0 for lose, 1 for win
 	Instructions(){
@@ -60,8 +60,8 @@ public class Instructions {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				// dito sana may return to main menu, pero di ko pa natry so exit palang yung ginagawa niya.
+				System.exit(0);
 				
-//				mainscreen.getStage().
 			}
 		});
 		

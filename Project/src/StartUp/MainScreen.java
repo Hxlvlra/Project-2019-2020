@@ -20,7 +20,7 @@ import javafx.util.Duration;
 public class MainScreen {
 	private AnchorPane pane;
 	private Scene scene;
-	private Stage stage;
+	public Stage stage;
 	private GraphicsContext gc;
 	private Canvas canvas;	
 	
