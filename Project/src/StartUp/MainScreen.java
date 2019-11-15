@@ -19,8 +19,8 @@ import javafx.util.Duration;
 
 public class MainScreen {
 	private AnchorPane pane;
-	private Scene scene;
-	public Stage stage;
+	public Scene scene;
+	private Stage stage;
 	private GraphicsContext gc;
 	private Canvas canvas;	
 	
@@ -57,21 +57,21 @@ public class MainScreen {
 		newGame.setId(MainScreen.NEW_GAME);
 		newGame.setLayoutX(300);
 		newGame.setLayoutY(300);
-		this.addEventHandler(newGame);
+		this.addEventHandler(newGame, this);
 		
 		Button instructions = new Button("How to Play");
 		instructions.setFont(button);
 		instructions.setId(MainScreen.INSTRUCTIONS);
 		instructions.setLayoutX(300);
 		instructions.setLayoutY(400);
-		this.addEventHandler(instructions);
+		this.addEventHandler(instructions, this);
 
 		Button about = new Button("About the Game");
 		about.setFont(button);
 		about.setId(MainScreen.ABOUT);
 		about.setLayoutX(300);
 		about.setLayoutY(500);
-		this.addEventHandler(about);
+		this.addEventHandler(about, this);
 				
 		
 		//set stage elements here
@@ -82,7 +82,7 @@ public class MainScreen {
 		this.stage.show();
 	}
 
-	private void doGameOption(String id){
+	private void doGameOption(String id, MainScreen mainscreen){
 		
 		PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
 		pause.setOnFinished(new EventHandler<ActionEvent>() {
@@ -90,13 +90,13 @@ public class MainScreen {
 			public void handle(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				if (id == MainScreen.ABOUT) {
-					AboutPage aboutpage = new AboutPage();
+					AboutPage aboutpage = new AboutPage(mainscreen);
 					stage.setScene(aboutpage.getScene());
 				} else if (id == MainScreen.INSTRUCTIONS) {
-					Instructions instructions = new Instructions();
+					Instructions instructions = new Instructions(mainscreen);
 					stage.setScene(instructions.getScene());
 //				} else if (id == MainScreen.NEW_GAME) {
-//					NewGame newgame = new NewGame();
+//					NewGame newgame = new NewGame(mainscreen);
 //					stage.setScene(newgame.getScene());					
 				}
 				
@@ -105,17 +105,17 @@ public class MainScreen {
 		pause.play();
 	}
 	
-	private void addEventHandler(Button btn) {
+	private void addEventHandler(Button btn, MainScreen mainscreen) {
 
 		btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
 				// TODO Auto-generated method stub
 				if (btn.getId() == MainScreen.NEW_GAME) {
-					doGameOption(btn.getId());
+					doGameOption(btn.getId(), mainscreen);
 				} else if (btn.getId() == MainScreen.INSTRUCTIONS) {
-					doGameOption(btn.getId());
+					doGameOption(btn.getId(), mainscreen);
 				} else if (btn.getId() == MainScreen.ABOUT) {
-					doGameOption(btn.getId());
+					doGameOption(btn.getId(), mainscreen);
 				}
 				
 			}
@@ -127,7 +127,7 @@ public class MainScreen {
 	Scene getScene(){
 		return this.scene;
 	}
-
+	
 	Stage getStage() {
 		return this.stage;
 	}
