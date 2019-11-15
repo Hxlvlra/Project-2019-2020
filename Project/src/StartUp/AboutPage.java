@@ -10,6 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class AboutPage {
 	private AnchorPane pane;
@@ -30,25 +32,38 @@ public class AboutPage {
 	}
 	
 	private void setProperties(){
-		this.gc.setFill(Color.rgb(13, 49, 61));					//set color of background
+		this.gc.setFill(Color.rgb(13, 49, 61));
 		this.gc.fillRect(0,0,800,800);
-		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,40);	//set font type, style and size
+		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,40);
 		this.gc.setFont(Header);
-		this.gc.setFill(Color.rgb(100, 162, 100));										//set font color of text
-		this.gc.fillText("About Page", 25, 40);
-		Font content = Font.font("Press Start 2P",FontWeight.BOLD,20);
-		this.gc.setFont(content);
-		this.gc.fillText("Known as BurgerTime in the U.S., this game had an original title of Hamburger when it was first released to Japanese audiences in 1982.", 25, 65);
+		this.gc.setFill(Color.rgb(100, 162, 100));
+		this.gc.fillText("About Page", 50, 100);
 
-		Font button = Font.font("Press Start 2P",FontWeight.BOLD,16);	//set font type, style and size
+		Font content = Font.font("Press Start 2P",FontWeight.BOLD,15);
+		Text about = new Text();
+		about.setFont(content);
+		about.setTextAlignment(TextAlignment.JUSTIFY);
+		about.setFill(Color.rgb(100, 162, 100));
+		about.setLayoutX(50);
+		about.setLayoutY(130);
+		about.setLineSpacing(10);
+		about.setText("Known as BurgerTime in the U.S., this game had an original title of Hamburger when it was first released to Japanese audiences in 1982.\n"
+				+ "\nThe player is chef Peter Pepper, who must walk over hamburger ingredients located across a maze of platforms while avoiding pursuing characters.\n"
+				+"\nThis mini-game is a project of CMSC 22 students of AY 2019-2020 1st semester.\n"
+				+ "AGUILAR,DANIEL PETE MALINGIN\r\n"
+				+ "CRESPO,STEVEN DAVID ANGELES\r\n"
+				+ "PEKAS,DAVID AVERY TUDLONG\r\n"
+				);
+		about.setWrappingWidth(700);
 		
+		Font button = Font.font("Press Start 2P",FontWeight.BOLD,10);
 		Button backtomain = new Button("Return");
 		backtomain.setFont(button);
-		backtomain.setLayoutX(700);
-		backtomain.setLayoutY(20);
+		backtomain.setLayoutX(660);
+		backtomain.setLayoutY(70);
 		this.addEventHandler(backtomain);
 		
-		pane.getChildren().add(this.canvas);
+		pane.getChildren().addAll(this.canvas, about);
 		pane.getChildren().add(backtomain);
 	}
 	

@@ -27,7 +27,8 @@ public class MainScreen {
 	public final static String NEW_GAME = "new game";
 	public final static String INSTRUCTIONS = "instructions";
 	public final static String ABOUT = "about";
-
+	public final static String EXIT = "exit";
+	
 	public final Image bg = new Image("images/dark.jpg",800,800,false,false);
 	public final Image header = new Image("images/BT.jpg", 600, 189, false, false);
 	
@@ -48,34 +49,44 @@ public class MainScreen {
 		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,60);	//set font type, style and size
 		this.gc.setFont(Header);
 		this.gc.setFill(Color.WHITE);	//set font color of text
-		this.gc.fillText("BURGER TIME", 50, 150);
+		this.gc.fillText("BURGER TIME", 80, 200);
 
 		Font button = Font.font("Press Start 2P",FontWeight.BOLD,16);	//set font type, style and size
 
 		Button newGame = new Button("Start New Game");
 		newGame.setFont(button);
+		newGame.setMinWidth(250);
 		newGame.setId(MainScreen.NEW_GAME);
-		newGame.setLayoutX(300);
+		newGame.setLayoutX(250);
 		newGame.setLayoutY(300);
 		this.addEventHandler(newGame, this);
 		
 		Button instructions = new Button("How to Play");
 		instructions.setFont(button);
+		instructions.setMinWidth(250);
 		instructions.setId(MainScreen.INSTRUCTIONS);
-		instructions.setLayoutX(300);
+		instructions.setLayoutX(250);
 		instructions.setLayoutY(400);
 		this.addEventHandler(instructions, this);
 
 		Button about = new Button("About the Game");
 		about.setFont(button);
+		about.setMinWidth(250);
 		about.setId(MainScreen.ABOUT);
-		about.setLayoutX(300);
+		about.setLayoutX(250);
 		about.setLayoutY(500);
 		this.addEventHandler(about, this);
 				
+		Button exit = new Button("Exit");
+		exit.setFont(button);
+		exit.setMinWidth(250);
+		exit.setId(MainScreen.EXIT);
+		exit.setLayoutX(250);
+		exit.setLayoutY(750);
+		this.addEventHandler(exit, this);
 		
 		//set stage elements here
-		pane.getChildren().addAll(this.canvas, newGame, instructions, about);
+		pane.getChildren().addAll(this.canvas, newGame, instructions, about, exit);
 		
 		this.stage.setTitle("Modified Burger Time Game");
 		this.stage.setScene(this.scene);
@@ -88,16 +99,15 @@ public class MainScreen {
 		pause.setOnFinished(new EventHandler<ActionEvent>() {
 			
 			public void handle(ActionEvent arg0) {
-				// TODO Auto-generated method stub
 				if (id == MainScreen.ABOUT) {
 					AboutPage aboutpage = new AboutPage(mainscreen);
 					stage.setScene(aboutpage.getScene());
 				} else if (id == MainScreen.INSTRUCTIONS) {
 					Instructions instructions = new Instructions(mainscreen);
 					stage.setScene(instructions.getScene());
-//				} else if (id == MainScreen.NEW_GAME) {
-//					NewGame newgame = new NewGame(mainscreen);
-//					stage.setScene(newgame.getScene());					
+				} else if (id == MainScreen.NEW_GAME) {
+					NewGame newgame = new NewGame();
+					stage.setScene(newgame.getScene());					
 				}
 				
 			}
@@ -109,13 +119,14 @@ public class MainScreen {
 
 		btn.setOnMouseClicked(new EventHandler<MouseEvent>() {
 			public void handle(MouseEvent arg0) {
-				// TODO Auto-generated method stub
 				if (btn.getId() == MainScreen.NEW_GAME) {
 					doGameOption(btn.getId(), mainscreen);
 				} else if (btn.getId() == MainScreen.INSTRUCTIONS) {
 					doGameOption(btn.getId(), mainscreen);
 				} else if (btn.getId() == MainScreen.ABOUT) {
 					doGameOption(btn.getId(), mainscreen);
+				} else if (btn.getId() == MainScreen.EXIT) {
+					System.exit(0);
 				}
 				
 			}

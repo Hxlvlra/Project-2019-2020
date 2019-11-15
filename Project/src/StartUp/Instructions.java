@@ -10,6 +10,8 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 
 public class Instructions {
 	private AnchorPane pane;
@@ -29,30 +31,42 @@ public class Instructions {
 	}
 	
 	private void setProperties(){
-		this.gc.setFill(Color.rgb(13, 49, 61));					//set color of background
+		this.gc.setFill(Color.rgb(13, 49, 61));
 		this.gc.fillRect(0,0,800,800);
-		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,40);	//set font type, style and size
+		Font Header = Font.font("Press Start 2P",FontWeight.BOLD,40);
 		this.gc.setFont(Header);
-		this.gc.setFill(Color.rgb(100, 162, 100));										//set font color of text
-		this.gc.fillText("About Page", 25, 50);
-		Font content = Font.font("Press Start 2P",FontWeight.BOLD,20);
-		this.gc.setFont(content);
-		// di ko pa alam kung paano gawin na field para ma wrap text sana. kailangan ng edit
-		// mas maganda ata na text nalang.
-		this.gc.fillText("Chef Peter Pepper starts off in the center of the very bottom platform at the beginning of each level.", 25, 70);
-		this.gc.fillText("Each burger must be dropped to the bottom in its designated holding place. ", 25, 90);
-		this.gc.fillText("Use the pepper shaker if you become cornered or fear that you cannot outrun nearby opponents.", 25, 110);		
-		this.gc.fillText("You will have an unlimited amount of time to complete each stage.", 25, 130);
+		this.gc.setFill(Color.rgb(100, 162, 100));
+		this.gc.fillText("Instructions", 50, 100);
 		
-		Font button = Font.font("Press Start 2P",FontWeight.BOLD,16);	//set font type, style and size
+		Font content = Font.font("Press Start 2P",FontWeight.BOLD,15);
+		Text howTo = new Text();
+		howTo.setFont(content);
+		howTo.setTextAlignment(TextAlignment.JUSTIFY);
+		howTo.setFill(Color.rgb(100, 162, 100));
+		howTo.setLayoutX(50);
+		howTo.setLayoutY(130);
+		howTo.setLineSpacing(10);
+		howTo.setText("Playing as Chef Peter Pepper, player is chased by hotdogs, pickles and fried eggs up and down ladders and across platforms.\n"
+				+ "On each stage, a number of  complete burgers are to be assembled. "
+				+ "Each burger must be dropped to the bottom in its designated holding place. "
+				+ "This is done by running across the buns, burger patties, lettuce and tomato slices. "
+				+ "Every time that player runs across a part of the burger, it drops down one level. "
+				+ "When all of the burgers are done, the level is complete.\n"
+				+ "Picking up food icons that appear on the platforms and defeating enemies awards the player extra points.\n"
+				+ "\nUse the the arrow keys to move Chef Peter Pepper\n"
+				+ "\nUse the space bar to activate Chef Peter Pepper's pepper shaker.\n"
+				+ "\nGood Luck!!!"
+				);
+		howTo.setWrappingWidth(700);
 		
+		Font button = Font.font("Press Start 2P",FontWeight.BOLD,10);	//set font type, style and size	
 		Button backtomain = new Button("Return");
 		backtomain.setFont(button);
-		backtomain.setLayoutX(700);
-		backtomain.setLayoutY(20);
+		backtomain.setLayoutX(660);
+		backtomain.setLayoutY(70);
 		this.addEventHandler(backtomain);
 		
-		pane.getChildren().addAll(this.canvas, backtomain);
+		pane.getChildren().addAll(this.canvas, backtomain, howTo);
 	}
 	
 	private void addEventHandler(Button btn) {
